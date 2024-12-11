@@ -28,6 +28,19 @@ describe("Shopping cart should checkout", () => {
          expect(order.totalPrice).toBe(195);
     });
 
+    it("Should calculate loyalty points per purchase", () => {
+        //given
+        const products = [
+            new Product(100,"NO-DISCOUNT","MANZANAS DE ORUJO"), new Product(95,"NO-DISCOUNT","LECHUGA NORDICA")]
+        const shoppingCart = new ShoppingCart(customer, products);
+
+     //when
+        const order = shoppingCart.checkout();
+    //then
+        expect(order.loyaltyPoints).toBe(39);
+    });
+
+
     it("Should calculate correct total for 10% discounted products", () => {
         const products = [new Product(100, "DIS_10_TestProduct", "Test product")];
         const shoppingCart = new ShoppingCart(customer, products);
