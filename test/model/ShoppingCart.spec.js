@@ -9,6 +9,27 @@ describe("Shopping cart should checkout", () => {
         customer = new Customer("Ramon Garcia Guapo");
     });
 
+    it("SHOULD CHECK THE TOTAL PRICE OF THIS PURCHASE WITH DISCOUNTS", () => {
+        //GIVEN SITE ------
+        let newcustomer = new Customer("Maria Perdida");
+        let product1 = new Product(100, 'DIS_10', 'ciruelas');  
+        let product2 = new Product(95, 'NONE_DIS', 'papas'); 
+        
+        let products = [product1, product2]
+
+        let shoppingCart = new ShoppingCart (newcustomer,products)
+
+
+        //WHEN SITE ------
+let order = shoppingCart.checkout()
+
+
+        //THEN SITE ------
+       expect(order.totalPrice).toBe(185);
+         
+     });
+
+
     it("SHOULD CHECK THE TOTAL PRICE OF THIS PURCHASE", () => {
         //GIVEN SITE ------
         const products = [
@@ -40,6 +61,8 @@ describe("Shopping cart should checkout", () => {
         expect(order.loyaltyPoints).toBe(39);
     });
 
+
+    //kat
 
     it("Should calculate correct total for 10% discounted products", () => {
         const products = [new Product(100, "DIS_10_TestProduct", "Test product")];
