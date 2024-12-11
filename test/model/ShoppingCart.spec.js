@@ -6,7 +6,26 @@ describe("Shopping cart should checkout", () => {
 
     let customer;
     beforeEach(() => {
-        customer = new Customer("Test customer");
+        customer = new Customer("Ramon Garcia Guapo");
+    });
+
+    it("SHOULD CHECK THE TOTAL PRICE OF THIS PURCHASE", () => {
+        //GIVEN SITE ------
+        const products = [
+            new Product(100,"NO-DISCOUNT","MANZANAS DE ORUJO"),
+            new Product(95,"NO-DISCOUNT","LECHUGA NORDICA")
+        ];
+        // console.table(products);
+        const myCostumer = new Customer("Ramon Garcia Guapo");
+        const myShoppingCart = new ShoppingCart(myCostumer,products);
+         //console.table(myShoppingCart);
+        // console.info(myCostumer);
+
+        //WHEN SITE - Accion que queremos completar
+        const order = myShoppingCart.checkout();
+        //console.table(order);
+
+         expect(order.totalPrice).toBe(195);
     });
 
     it("Should calculate correct total for 10% discounted products", () => {
