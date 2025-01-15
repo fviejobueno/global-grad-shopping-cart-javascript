@@ -1,5 +1,5 @@
 
-import { add } from './calculator'
+import { add, substract } from './calculator'
 import { expect, test } from 'vitest'
 
 
@@ -16,4 +16,15 @@ test('Add numbers using the add method', () => {
      expect(functionSuma).toBe(resultadoEsperado)
      
 
+})
+test('substract', () =>{
+     //given
+     const a = 5
+     const b = 10
+     //when
+     const functionResta = substract(a, b)
+     //then
+     const resultadoEsp = 5
+
+     expect(functionResta).toBe(resultadoEsp)
 })
