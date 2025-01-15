@@ -1,4 +1,10 @@
-import { add, sustract, multiplicar, dividir } from "./calculator";
+import {
+  add,
+  sustract,
+  multiplicar,
+  dividir,
+  dividirPorCero,
+} from "./calculator";
 import { expect, test } from "vitest";
 
 test("Add numbers using the add method", () => {
@@ -39,12 +45,23 @@ test("Multiplicar numbers using the multiplicar method", () => {
 
 test("Dividir numbers using the dividir method", () => {
   //given
-  const x = 9;
+  const x = 12;
   const y = 3;
   //when
   const functionDividir = dividir(x, y);
   //then
-  const resultadoEsperado = 3;
+  const resultadoEsperado = 4;
 
   expect(functionDividir).toBe(resultadoEsperado);
 });
+
+test("TDD : Disvisión"),
+  () => {
+    const x = 12;
+    const y = 0;
+
+    const functionDividirporCero = dividirPorCero(x, y);
+    const resultadoEsperado = 0;
+
+    expect(functionDividirporCero).toBe(resultadoEsperado);
+  };
